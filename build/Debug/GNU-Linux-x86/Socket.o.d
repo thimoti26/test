@@ -1,3 +1,0 @@
-build/Debug/GNU-Linux-x86/Socket.o: Socket.cpp Define.h
-
-Define.h:

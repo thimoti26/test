@@ -57,7 +57,7 @@ void ChargeDictionnaire() {
 //    Close(fichier);
     ShowDictionnary();
 }
-
+ 
 void SaveDictionnaire() {
     fstream fichier;
     cout << "Saving dictionnary" << endl;

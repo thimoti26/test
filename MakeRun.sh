@@ -1,3 +1,8 @@
+#!/bin/bash
+#Creation Executable
 make
-./dist/Debug/GNU-Linux-x86/lancementGestionContainer.sh
-./dist/Debug/GNU-Linux-x86/gestioncontainer
+make clean
+#Droit de ROOT
+chown root GestionContainers
+chmod 4550 GestionContainers
+./GestionContainers
