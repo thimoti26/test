@@ -1,2 +1,6 @@
-git remote add a https://github.com/thimoti26/test.git
-git push -u a coucou
+gitpush() {
+    git add .
+    git commit -m "$*"
+    git push
+}
+alias gp=gitpush
