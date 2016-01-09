@@ -11,6 +11,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <sys/select.h>
 #include <unistd.h> /* close */
 #include <netdb.h> /* gethostbyname */
 #include <vector>
@@ -43,7 +44,9 @@ typedef struct dictionnaire {
 ////////////////Prototype/////////////////
 /////////SOCKET//////////
 string GetMacAddr();
-void init_connection(const char *);
+void init_connection();
+void SetUnblocked();
+void Connection(const char *);
 void end_connection();
 string read_server();
 void write_server(const char*);
@@ -72,7 +75,7 @@ void DemarrageTimer();
 FILE* OpenPipe(FILE*, const char*, const char*);
 char* ReadPipe(char*, FILE*, int);
 void ClosePipe(FILE*);
-void OpenFile(fstream&,const char*, std::ios::openmode);
+void OpenFile(fstream&, const char*, std::ios::openmode);
 void ReadFile(fstream&, dictionnaire*, int);
 void WriteFile(fstream&, dictionnaire*, int);
 void Close(fstream&);
