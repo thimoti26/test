@@ -7,6 +7,7 @@ string GetMacAddr() {
     FILE* Fichier = fopen("/sys/class/net/eth0/address", "r");
     char Adresse[40];
     fgets(Adresse, sizeof (Adresse), Fichier);
+    Adresse[strlen(Adresse)-1]=0;//viré le /n
     fclose(Fichier);
     return Adresse;
 }

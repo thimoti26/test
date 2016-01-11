@@ -124,6 +124,7 @@ void ShowContainers(bool All) {
     if (All)commande += "-a";
     string Message = GetMessageFromCommand(commande, false);
     cout << Message;
+    write_server(Message.c_str());
 }
 
 void ShowImages() {
@@ -131,6 +132,7 @@ void ShowImages() {
     string commande = "docker images ";
     string Message = GetMessageFromCommand(commande, false);
     cout << Message;
+    write_server(Message.c_str());
 }
 
 void StopAllContainers() {

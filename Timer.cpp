@@ -6,7 +6,7 @@ sigset_t mask;
 
 void Coucou(int a) {
     static int i = 0;
-    string message = "GetVersion(";
+    string message = "mac : ";
     message += GetMacAddr();
     message += ")_";
     char Nombre[5];

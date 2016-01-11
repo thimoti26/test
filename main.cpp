@@ -4,9 +4,22 @@ vector <dictionnaire> ListeDico;
 
 void ShowDictionnary() {
     if (ListeDico.size() <= 0)cout << "Dictionnary empty" << endl;
+    string message;
     for (auto& i : ListeDico) {
         cout << "Conteneur : " << i.Container << " ID : " << i.ContainerIDAssocie << " Repository : " << i.Repository << " Image Id : " << i.ImageIDAssocie << " Running : " << i.IsRunning << endl;
+        message += "conteneur : ";
+        message += i.Container;
+        message += " ID : ";
+        message += i.ContainerIDAssocie;
+        message += " Repository : ";
+        message += i.Repository;
+        message += " Image Id : ";
+        message += i.ImageIDAssocie;
+        message += " Running : ";
+        message += i.IsRunning;
+        message += "\n";
     }
+    write_server(message.c_str());
 }
 
 void SetAllImageRunningFromDictionnary(bool IsRunning) {
@@ -96,11 +109,13 @@ int main(int argc, char** argv) {
                 StopAllContainers();
                 DeleteAllContainers();
                 DeleteDictionnary();
+                write_server("DONE");
                 cout << "DONE" << endl;
             } else {
                 if (strcmp(messageRecu.c_str(), "stopallcontainers") == 0) {
                     StopAllContainers();
                     SetAllImageRunningFromDictionnary(false);
+                    write_server("DONE");
                     cout << "DONE" << endl;
                 } else {
                     if (strcmp(messageRecu.c_str(), "showdictionnary") == 0) {
@@ -118,6 +133,7 @@ int main(int argc, char** argv) {
                                 if (strcmp(messageRecu.c_str(), "end") == 0) {
                                     SaveDictionnaire();
                                     fin = true;
+                                    write_server("DONE");
                                     cout << "DONE" << endl;
                                 } else { //commande Complexe
                                     string ContenerChoisis = "";
@@ -152,17 +168,20 @@ int main(int argc, char** argv) {
                                             DeleteContainerId(GetContainerIdFromImage((Repository), true));
                                             DeleteImage(GetImageId(Repository, latest));
                                             DeleteImageFromDictionnary(Repository.c_str());
+                                            write_server("DONE");
                                             cout << "DONE" << endl;
                                         } else {
                                             if (strcmp(ContenerChoisis.c_str(), "stopcontainer") == 0) {//pour delete tout les containers, il faut les stopper
                                                 StopContainerId(GetContainerIdFromImage(GetImageId(Repository.c_str(), latest)));
                                                 SetContainerRunningFromDictionnary(Repository.c_str(), false);
+                                                write_server("DONE");
                                                 cout << "DONE" << endl;
                                             } else {
                                                 if (strcmp(ContenerChoisis.c_str(), "deletecontainer") == 0) {
                                                     StopContainerId(GetContainerIdFromImage(GetImageId(Repository.c_str(), latest)));
                                                     DeleteContainerId(GetContainerIdFromImage(GetImageId(Repository.c_str(), latest), true));
                                                     SetContainerRunningFromDictionnary(Repository.c_str(), false);
+                                                    write_server("DONE");
                                                     cout << "DONE" << endl;
                                                 } else {
                                                     Pull(Repository.c_str()); //si il ne l'a pas, sinon ne fait rien
@@ -279,6 +298,7 @@ int main(int argc, char** argv) {
                                                                 Dico.IsRunning = false;
                                                             }
                                                             ListeDico.push_back(Dico);
+                                                            write_server("DONE");
                                                         }
                                                     }
                                                     cout << "DONE" << endl;
