@@ -98,6 +98,7 @@ int main(int argc, char** argv) {
     DeleteAllContainers();
     //    ChargeDictionnaire();
     cout << "DONE" << endl;
+                write_server("DONE");
     while (!fin) {
         messageRecu = read_server();
         if (messageRecu == "") {//serveur deco
