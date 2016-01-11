@@ -16,7 +16,9 @@ void ShowDictionnary() {
         message += " Image Id : ";
         message += i.ImageIDAssocie;
         message += " Running : ";
-        message += i.IsRunning;
+        char Nombre[5];
+        sprintf(Nombre, "%d", i.IsRunning);
+        message += Nombre;
         message += "\n";
     }
     write_server(message.c_str());
@@ -120,14 +122,17 @@ int main(int argc, char** argv) {
                 } else {
                     if (strcmp(messageRecu.c_str(), "showdictionnary") == 0) {
                         ShowDictionnary();
+                        write_server("DONE");
                         cout << "DONE" << endl;
                     } else {
                         if (strcmp(messageRecu.c_str(), "showcontainers") == 0) {
                             ShowContainers(true);
+                            write_server("DONE");
                             cout << "DONE" << endl;
                         } else {
                             if (strcmp(messageRecu.c_str(), "showimages") == 0) {
                                 ShowImages();
+                                write_server("DONE");
                                 cout << "DONE" << endl;
                             } else {
                                 if (strcmp(messageRecu.c_str(), "end") == 0) {
@@ -154,6 +159,7 @@ int main(int argc, char** argv) {
                                     }
                                     if (i >= messageRecu.size()) {//c'est qu'il n'y avais pas de ':'
                                         cout << "Erreur Format" << endl;
+                                        write_server("FORMATING ERROR");
                                         cout << "DONE" << endl;
                                     } else {
                                         i++; //consomme le ':'
@@ -298,9 +304,9 @@ int main(int argc, char** argv) {
                                                                 Dico.IsRunning = false;
                                                             }
                                                             ListeDico.push_back(Dico);
-                                                            write_server("DONE");
                                                         }
                                                     }
+                                                    write_server("DONE");
                                                     cout << "DONE" << endl;
                                                 }
                                             }
