@@ -1,0 +1,6 @@
+setup.py
+GestionContainersPython.egg-info/PKG-INFO
+GestionContainersPython.egg-info/SOURCES.txt
+GestionContainersPython.egg-info/dependency_links.txt
+GestionContainersPython.egg-info/requires.txt
+GestionContainersPython.egg-info/top_level.txt
