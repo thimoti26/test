@@ -59,7 +59,7 @@ class SocketClient:
         return None
     
     def timeout(self):
-        print 'TIMEOUT'
+#        print 'TIMEOUT'
         self.ContinueRecept = False
     
     def SetPubKey(self, key):
@@ -70,7 +70,7 @@ class SocketClient:
             print(self.rsa.lastErrorText())
             sys.exit()
         self.rsa.put_EncodingMode("hex")
-        print 'Cle : ' + str(key)
+#        print 'Cle : ' + str(key)
         success = cle.LoadOpenSslPem(str(key))
         if (success != True):
             print(cle.lastErrorText())
@@ -85,11 +85,11 @@ class SocketClient:
         success = self.RsaRecep.UnlockComponent("Anything for 30-day trial")
         self.RsaRecep.put_EncodingMode("hex")
         if (success != True):
-            print(self.RsaRecep.lastErrorText())
+#            print(self.RsaRecep.lastErrorText())
             sys.exit()
         success = self.RsaRecep.GenerateKey(1024)
         if (success != True):
-            print(self.RsaRecep.lastErrorText())
+#            print(self.RsaRecep.lastErrorText())
             sys.exit()
 
         publicKey = self.RsaRecep.ExportPublicKeyObj().getOpenSslPem()
@@ -98,20 +98,17 @@ class SocketClient:
         self.Envoi(ExecCode)    
     
     def CrypteMsg(self, msg):
-        print 'Send : '
-        print 'Decrypte : ' + msg 
+#        print 'Send : '
+#        print 'Decrypte : ' + msg 
         mess = self.rsa.encryptStringENC(str(msg),False)
-        print 'Crypte : ' + mess 
+#        print 'Crypte : ' + mess 
         return mess  
     
     def DecrypteMsg(self, msg):
-        try:
-            print 'Recv : '
-            print 'Crypte : ' + msg 
-            mess = self.RsaRecep.decryptStringENC(str(msg),True)
-            print 'Decrypte : ' + mess 
-        except Exception as e:
-            print "erreur decryptage : " + str(self.RsaRecep.lastErrorText())
+#            print 'Crypte : ' + msg 
+        mess = self.RsaRecep.decryptStringENC(str(msg),True)
+#            print 'Decrypte : ' + mess 
+#            print "erreur decryptage : " + str(self.RsaRecep.lastErrorText())
         return mess
         
     def Reception(self):
@@ -134,7 +131,7 @@ class SocketClient:
                         json.loads(message)
                         return message
                     except Exception as e:
-                        print 'E : ' + str(e)
+#                        print 'E : ' + str(e)
                         continue
         except socket.timeout:
             return
@@ -145,7 +142,7 @@ class SocketClient:
     def Envoi(self,Message):
         if(Message != None):
             try:
-                print 'r : '+str(Message)
+#                print 'r : '+str(Message)
                 sent = self.Sock.send(str(self.CrypteMsg(Message)))
                 if sent == 0:
                     print 'Probleme'

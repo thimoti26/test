@@ -20,7 +20,7 @@ print 'Connecte'
 ReponseCommande = ''
 while(ReponseCommande != 'end'):
     MessageRecu = LeSocket.Reception()
-    print 'Recu ' + str(MessageRecu)
+#    print 'Recu ' + str(MessageRecu)
     ReponseCommande = GestionDocker.Execute(MessageRecu)
     LeSocket.Envoi(ReponseCommande)
 print 'Fin'

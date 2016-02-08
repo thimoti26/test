@@ -57,7 +57,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : ExecCode})
             return ExecCode
         ExecCode = json.dumps({'showcontainer': ExecCode})
-        print 'Container : ' + str(ExecCode)
+#        print 'Container : ' + str(ExecCode)
         return ExecCode
 
     def Showmac(self, param):
@@ -91,7 +91,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : ExecCode})
             return ExecCode
         ExecCode = json.dumps({'showimage': ExecCode})
-        print "Image : " + str(ExecCode)
+#        print "Image : " + str(ExecCode)
         return ExecCode
 
     def Deleteimage(self, param):
@@ -116,7 +116,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : str(ExecCode)})
             return ExecCode
         ExecCode = json.dumps({'deleteimage': ExecCode})
-        print 'Delete Img : ' + str(ExecCode)
+#        print 'Delete Img : ' + str(ExecCode)
         return ExecCode
     
     def StopContainer(self, param):
@@ -139,7 +139,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : str(ExecCode)})
             return ExecCode
         ExecCode = json.dumps({'stopcontainer': ExecCode})
-        print 'StopContainer : ' + str(ExecCode)
+#        print 'StopContainer : ' + str(ExecCode)
         return ExecCode
     
     def CreateHostConfig(self, param):
@@ -240,7 +240,7 @@ class GestionDocker:
             ExecCode = json.dumps({'createhost': str(e)})
             ExecCode = json.dumps({'ERROR' : str(ExecCode)})
             return ExecCode
-        print 'CreateHost : ' + str(ExecCode)
+#        print 'CreateHost : ' + str(ExecCode)
         return ExecCode
 
     def DeleteContainer(self, param):
@@ -268,7 +268,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : str(ExecCode)})
             return ExecCode
         ExecCode = json.dumps({'deletecontainer': ExecCode})
-        print 'DeleteContainer : ' + str(ExecCode)
+#        print 'DeleteContainer : ' + str(ExecCode)
         return ExecCode
 
     def run(self, param):
@@ -363,7 +363,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : str(ExecCode)})
             return ExecCode
         ExecCode = json.dumps({'createcontainer': ExecCode})
-        print 'CreateContainer : ' + str(ExecCode)
+#        print 'CreateContainer : ' + str(ExecCode)
         return ExecCode
 
     def Login(self, param):
@@ -401,7 +401,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR' : str(ExecCode)})
             return ExecCode
         ExecCode = json.dumps({'login': ExecCode})
-        print 'Login : ' + ExecCode
+#        print 'Login : ' + ExecCode
         return ExecCode
 
     def Pull(self, param):
@@ -442,7 +442,7 @@ class GestionDocker:
             ExecCode = json.dumps({'ERROR': str(ExecCode)})
             return ExecCode
         ExecCode = json.dumps({'pull': str(ExecCode)})
-        print 'Pull : ' + ExecCode
+#        print 'Pull : ' + ExecCode
         return ExecCode
 
     def end(self, param):
